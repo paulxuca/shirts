@@ -38,6 +38,14 @@ const apparelTypes = {
       name: 'Gilden sweater techno defender sample',
       default: 0,
       price: 23.99,
+      defaultPosition: {
+        top: 100,
+        left: 100,
+        canvas: {
+          height: 500,
+          width: 300,
+        },
+      },
       variants: [
         {
           name: 'navy',
@@ -57,6 +65,14 @@ const apparelTypes = {
       name: 'Gilden quarter zip fleece sweater',
       default: 0,
       price: 30.99,
+      defaultPosition: {
+        top: 100,
+        left: 100,
+        canvas: {
+          height: 500,
+          width: 300,
+        },
+      },
       variants: [
         {
           name: 'red',
@@ -74,6 +90,14 @@ const apparelTypes = {
       name: 'Gilden t-shirt 2001',
       default: 0,
       price: 13.99,
+      defaultPosition: {
+        top: 200,
+        left: 125,
+        canvas: {
+          height: 300,
+          width: 150,
+        },
+      },
       variants: [
         {
           name: 'white',

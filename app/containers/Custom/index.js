@@ -21,6 +21,7 @@ import TopLevelTab from 'components/TopLevelTab';
 import LowLevelTab from 'components/LowLevelTab';
 import ClothingListItem from 'components/ClothingListItem';
 import EditorView from 'components/EditorView';
+import EditorButtonGroup from 'components/EditorButtonGroup';
 import styles from './styles.css';
 
 class Custom extends React.Component {
@@ -64,7 +65,9 @@ class Custom extends React.Component {
             </div>
           </div>
           <div className={styles.customContainer__editorControls}>
-
+            <EditorButtonGroup
+              buttons={[1, 2, 3]}
+            />
           </div>
         </div>
         <div className={styles.customContainer__preview}>

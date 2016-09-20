@@ -1,0 +1,16 @@
+.editorButtonGroup {
+  padding: 0px;
+  margin: 0px;
+  max-width: 40px;
+  border-radius: 10px;
+  list-style: none;
+  background-color: white;
+  box-shadow: #BFBFBE 0 -13px 50px;
+}
+
+.editorButtonGroup li {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

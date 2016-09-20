@@ -50,6 +50,7 @@
 
 .customContainer__editorControls {
   flex: 1;
+  margin: 30px 0px;
 }
 
 .containerItemsContainer{
