@@ -1,0 +1,3 @@
+export const CHANGE_TAB_TL = 'CHANGE_TAB_TL';
+export const CHANGE_TAB_LL = 'CHANGE_TAB_LL';
+export const SELECT_NEW_PRODUCT = 'SELECT_NEW_PRODUCT';

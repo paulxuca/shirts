@@ -1,0 +1,67 @@
+.customContainer {
+  flex: 10;
+  display: flex;
+  background-color: #F1F1F1;
+  flex-direction: row;
+}
+
+.customContainer__editor {
+  flex: 20;
+  display: flex;
+}
+
+.customContainer__preview {
+  flex: 18;
+  display: flex;
+}
+
+.customContainer__editorWindow {
+  flex: 10;
+  display: flex;
+}
+
+.customContainer__editorWindowContainer {
+  margin: 30px;
+  border-radius: 15px;
+  flex: 1;
+  background-color: #FFF;
+  display: flex;
+  box-shadow: #BFBFBE 0 -13px 50px;
+  flex-direction: column;
+}
+
+.containerTabContainer {
+  flex: 1;
+  max-height: 50px;
+  background-color: #F1F1F1;
+  border-radius: 15px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  display: flex;
+}
+
+.containerSubContainer {
+  flex: 1;
+  flex-direction: row;
+  display: flex;
+  max-height: 50px;
+  border-bottom: 1px solid #EEE;
+}
+
+.customContainer__editorControls {
+  flex: 1;
+}
+
+.containerItemsContainer{
+  flex: 10;
+  overflow: scroll;
+  display: flex;
+}
+
+.containerItemList{
+  margin: 20px;
+  flex: 1;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+}

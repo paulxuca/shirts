@@ -1,0 +1,20 @@
+.editorViewElement {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.editorViewClothing {
+  flex: 10;
+  display: flex;
+}
+
+.clothingCanvas {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+}
+
+.editorViewControls {
+  flex: 1;
+}

@@ -1,0 +1,62 @@
+.clothingItem {
+  max-width: 50%;
+  max-height: 300px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #EEE;
+  transition: 0.3s;
+  margin: 10px;
+}
+
+.clothingItem:hover {
+  transition: 0.3s;
+  transform: scale(1.05);
+}
+
+.clothingItemPicture {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-position: center;
+  background-size: cover;
+  max-height: 200px;
+  flex: 1;
+  border-bottom: 1px solid #EEE;
+}
+
+.clothingItemText {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 0px;
+  font-weight: 500;  
+  margin: 10px;
+}
+
+.clothingItemPrice {
+  text-align: center;
+  font-size: 20px;
+  margin: 0px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.eachColorDot {
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+}
+
+.colorDotContainer{
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+  max-height: 30px;
+}
+
+.colorDotContainer div {
+  margin: 10px;
+  border: 1px solid #EEE;
+}
