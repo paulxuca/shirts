@@ -79,7 +79,7 @@ const apparelTypes = {
           image: 'https://s3.amazonaws.com/shirts.qthreads/shirtpictures/gilden/quarter_zip/18800-red_A1_large.jpg',
         }, {
           name: 'black',
-          image: 'https://s3.amazonaws.com/shirts.qthreads/shirtpictures/gilden/quarter_zip/navy2.jpg5',
+          image: 'https://s3.amazonaws.com/shirts.qthreads/shirtpictures/gilden/quarter_zip/navy2.jpg',
         },
       ],
     },

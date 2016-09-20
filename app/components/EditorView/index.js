@@ -1,8 +1,14 @@
 import React from 'react';
 import styles from './styles.css';
-import { Canvas, Circle, Image, Path, Text } from 'react-fabricjs';
+import CanvasEditor from 'components/CanvasEditor';
 
 class EditorView extends React.Component {
+  selectNewcolor(nC) {
+    const newColorImage = this.props.data.variants.find((each) => each.name === nC).image;
+    this.props.selectNewColor(newColorImage);
+  }
+
+
   renderEditorView() {
     return (
       <div className={styles.editorViewElement}>
@@ -17,12 +23,26 @@ class EditorView extends React.Component {
               <div
                 className={styles.canvasContainer}
               >
-                <Canvas
-                  width={400}
-                  height={400}
+                <CanvasEditor
+                  canvasHeight={400}
+                  canvasWidth={400}
                 />
               </div>
             </div>
+          </div>
+        </div>
+        <div className={styles.editorViewControls}>
+          <div className={styles.editorViewControlsContainer}>
+              {this.props.data.variants.map((each) =>
+                <div
+                  key={each.name}
+                  className={styles.eachColorDot}
+                  style={{
+                    backgroundColor: each.name,
+                  }}
+                  onClick={() => this.selectNewcolor(each.name)}
+                />
+              )}
           </div>
         </div>
       </div>
@@ -40,7 +60,23 @@ EditorView.propTypes = {
     React.PropTypes.bool,
     React.PropTypes.object,
   ]),
+  selectNewColor: React.PropTypes.func,
 };
 
 
 export default EditorView;
+
+
+                // <Canvas
+                //   width={400}
+                //   ref="canvas"
+                //   height={400}
+                // >
+                //   <Image
+                //     src="http://i.imgur.com/jZsNUCi.jpg"
+                //     width={300}
+                //     height={300}
+                //     left={0}
+                //     top={500}
+                //   />
+                // </Canvas>

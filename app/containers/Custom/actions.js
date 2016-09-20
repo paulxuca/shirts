@@ -2,7 +2,15 @@ import {
   CHANGE_TAB_TL,
   CHANGE_TAB_LL,
   SELECT_NEW_PRODUCT,
+  SELECT_NEW_PRODUCT_COLOR,
 } from './constants';
+
+export function selectNewProductColor(newProductColor) {
+  return {
+    type: SELECT_NEW_PRODUCT_COLOR,
+    payload: newProductColor,
+  };
+}
 
 export function selectNewProduct(newProduct) {
   return {

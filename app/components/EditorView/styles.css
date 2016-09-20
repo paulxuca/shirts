@@ -11,8 +11,35 @@
   display: flex;
 }
 
+.editorViewControls {
+  flex: 1;
+  display: flex;
+}
+
+.editorViewControlsContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.eachColorDot {
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  margin: 0 10px;
+  border-radius: 1px solid #CCC;
+  transition: 0.3s;
+}
+
+.eachColorDot:hover {
+  transform: scale(1.2);
+  transition: 0.3s;
+}
+
 .editorViewClothingContainer {
-  margin: 20px;
+  margin: 20px 20px 0px 20px;
   max-width: 400px;
   height: 600px;
   flex: 1;
@@ -27,10 +54,6 @@
   border-radius: 10px;
   background-size: cover;
   background-position: center;
-}
-
-.editorViewControls {
-  flex: 1;
 }
 
 .canvasContainer {

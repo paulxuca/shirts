@@ -2,6 +2,7 @@ import {
   CHANGE_TAB_TL,
   CHANGE_TAB_LL,
   SELECT_NEW_PRODUCT,
+  SELECT_NEW_PRODUCT_COLOR,
 } from './constants';
 import {
   fromJS,
@@ -22,6 +23,8 @@ export default function customReducer(state = initialState, action) {
       return state.set('currentLowLevelTab', action.payload);
     case SELECT_NEW_PRODUCT:
       return state.set('currentSelectedProduct', action.payload);
+    case SELECT_NEW_PRODUCT_COLOR:
+      return state.set('currentSelectedProduct', { ...state.get('currentSelectedProduct'), image: action.payload });
     default:
       return state;
   }

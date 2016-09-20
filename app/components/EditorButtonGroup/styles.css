@@ -6,6 +6,11 @@
   list-style: none;
   background-color: white;
   box-shadow: #BFBFBE 0 -13px 50px;
+  margin: 15px 0px;
+}
+
+.editorButtonGroup:first-child {
+  margin: 0px;
 }
 
 .editorButtonGroup li {

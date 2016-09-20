@@ -8,6 +8,7 @@ import {
   changeTopLevelTab,
   changeLowLevelTab,
   selectNewProduct,
+  selectNewProductColor,
 } from './actions';
 import {
   lowLevelTabs,
@@ -66,13 +67,28 @@ class Custom extends React.Component {
           </div>
           <div className={styles.customContainer__editorControls}>
             <EditorButtonGroup
-              buttons={[1, 2, 3]}
+              buttons={[{
+                type: 'arrowUp',
+              }, {
+                type: 'arrowDown',
+              }, {
+                type: 'trashBin',
+              }]}
+            />
+            <EditorButtonGroup
+              buttons={[{
+                type: 'plus',
+              }, {
+                type: 'upload',
+              },
+              ]}
             />
           </div>
         </div>
         <div className={styles.customContainer__preview}>
           <EditorView
             data={this.props.currentProduct}
+            selectNewColor={this.props.selectNewProductColor}
           />
         </div>
       </div>
@@ -90,6 +106,7 @@ Custom.propTypes = {
     React.PropTypes.object,
   ]),
   selectNewProduct: React.PropTypes.func,
+  selectNewProductColor: React.PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -103,6 +120,7 @@ function mapActionsToProps(dispatch) {
     changeTopLevelTab: (newTab) => dispatch(changeTopLevelTab(newTab)),
     changeLowLevelTab: (newTab) => dispatch(changeLowLevelTab(newTab)),
     selectNewProduct: (newProduct) => dispatch(selectNewProduct(newProduct)),
+    selectNewProductColor: (nPC) => dispatch(selectNewProductColor(nPC)),
   };
 }
 
