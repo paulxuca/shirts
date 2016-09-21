@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './styles.css';
 import CanvasEditor from 'components/CanvasEditor';
+import EditorButtonGroup from 'components/EditorButtonGroup';
+
 
 class EditorView extends React.Component {
   selectNewcolor(nC) {
@@ -12,37 +14,66 @@ class EditorView extends React.Component {
   renderEditorView() {
     return (
       <div className={styles.editorViewElement}>
-        <div className={styles.editorViewClothing}>
-          <div className={styles.editorViewClothingContainer}>
-            <div
-              className={styles.clothingCanvas}
-              style={{
-                backgroundImage: `url(${this.props.data.image})`,
-              }}
-            >
+        <div className={styles.customContainer__editorControls}>
+          <EditorButtonGroup
+            buttons={[{
+              type: 'arrowUp',
+              tooltip: 'Move Layer forwards',
+            }, {
+              type: 'arrowDown',
+              tooltip: 'Move Layer backwards',
+            }, {
+              type: 'trashBin',
+              tooltip: 'Delete selected element',
+              onClick: () => this.canvasContainer.deleteActiveObject(),
+            }]}
+          />
+          <EditorButtonGroup
+            buttons={[{
+              type: 'plus',
+              tooltip: 'Add Text',
+              onClick: () => this.canvasContainer.addTextElement(),
+            }, {
+              type: 'upload',
+              tooltip: 'Upload image',
+            },
+            ]}
+          />
+        </div>
+        <div className={styles.previewContainer}>
+          <div className={styles.editorViewClothing}>
+            <div className={styles.editorViewClothingContainer}>
               <div
-                className={styles.canvasContainer}
+                className={styles.clothingCanvas}
+                style={{
+                  backgroundImage: `url(${this.props.data.image})`,
+                }}
               >
-                <CanvasEditor
-                  canvasHeight={400}
-                  canvasWidth={400}
-                />
+                <div
+                  className={styles.canvasContainer}
+                >
+                  <CanvasEditor
+                    ref={(canvas) => this.canvasContainer = canvas}
+                    canvasHeight={400}
+                    canvasWidth={400}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.editorViewControls}>
-          <div className={styles.editorViewControlsContainer}>
-              {this.props.data.variants.map((each) =>
-                <div
-                  key={each.name}
-                  className={styles.eachColorDot}
-                  style={{
-                    backgroundColor: each.name,
-                  }}
-                  onClick={() => this.selectNewcolor(each.name)}
-                />
-              )}
+          <div className={styles.editorViewControls}>
+            <div className={styles.editorViewControlsContainer}>
+                {this.props.data.variants.map((each) =>
+                  <div
+                    key={each.name}
+                    className={styles.eachColorDot}
+                    style={{
+                      backgroundColor: each.name,
+                    }}
+                    onClick={() => this.selectNewcolor(each.name)}
+                  />
+                )}
+            </div>
           </div>
         </div>
       </div>

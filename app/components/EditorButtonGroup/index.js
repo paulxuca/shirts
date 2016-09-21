@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './styles.css';
 import Icon from 'components/Icon';
+import EditorButtonGroupTooltip from 'components/EditorButtonGroupTooltip';
+
 
 function EditorButtonGroup({ buttons }) {
   return (
@@ -9,11 +11,18 @@ function EditorButtonGroup({ buttons }) {
         <li
           key={each.type}
         >
-          <button>
-            <Icon
-              type={each.type}
+          <div className={styles.editorButtonContainer}>
+            <EditorButtonGroupTooltip
+              text={each.tooltip}
             />
-          </button>
+            <button
+              onClick={each.onClick}
+            >
+              <Icon
+                type={each.type}
+              />
+            </button>
+          </div>
         </li>)}
     </ul>
   );

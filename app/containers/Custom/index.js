@@ -22,7 +22,6 @@ import TopLevelTab from 'components/TopLevelTab';
 import LowLevelTab from 'components/LowLevelTab';
 import ClothingListItem from 'components/ClothingListItem';
 import EditorView from 'components/EditorView';
-import EditorButtonGroup from 'components/EditorButtonGroup';
 import styles from './styles.css';
 
 class Custom extends React.Component {
@@ -64,25 +63,6 @@ class Custom extends React.Component {
                 </ul>
               </div>
             </div>
-          </div>
-          <div className={styles.customContainer__editorControls}>
-            <EditorButtonGroup
-              buttons={[{
-                type: 'arrowUp',
-              }, {
-                type: 'arrowDown',
-              }, {
-                type: 'trashBin',
-              }]}
-            />
-            <EditorButtonGroup
-              buttons={[{
-                type: 'plus',
-              }, {
-                type: 'upload',
-              },
-              ]}
-            />
           </div>
         </div>
         <div className={styles.customContainer__preview}>

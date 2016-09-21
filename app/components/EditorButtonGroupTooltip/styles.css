@@ -1,0 +1,26 @@
+.buttonToolTip {
+  position: absolute;
+  font-size: 12px;
+  z-index: 2;
+  margin-left: 50px;
+  box-shadow: #BFBFBE 0 10px 50px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background-color: white;
+  opacity: 0;
+  width: 140px;
+  text-align: center;
+  top: -13px;
+}
+
+.buttonToolTip:before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: -16px;
+  width: 0;
+  height: 0;
+  margin-top: -8px;
+  border: 8px solid transparent;
+  border-right-color: white;
+}

@@ -6,6 +6,23 @@ class CanvasEditor extends React.Component {
     this.canvas = new fabric.Canvas('c');
   }
 
+  addTextElement() {
+    const textElement = new fabric.IText('Hello World', { left: 100, top: 100, lockUniScaling: true });
+    this.canvas.add(textElement);
+    this.canvas.setActiveObject(textElement);
+    textElement.selectAll();
+    textElement.enterEditing();
+  }
+
+  deleteActiveObject() {
+    const activeObject = this.canvas.getActiveObject();
+    const activeObjectGroup = this.canvas.getActiveGroup();
+
+    this.canvas.discardActiveGroup();
+    if (activeObject) return this.canvas.remove(activeObject);
+    return activeObjectGroup.getObjects().forEach((each) => this.canvas.remove(each));
+  }
+
   render() {
     return (
       <div>
