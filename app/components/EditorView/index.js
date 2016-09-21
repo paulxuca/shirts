@@ -19,9 +19,11 @@ class EditorView extends React.Component {
             buttons={[{
               type: 'arrowUp',
               tooltip: 'Move Layer forwards',
+              onClick: () => this.canvasContainer.sendObjectForward(),
             }, {
               type: 'arrowDown',
               tooltip: 'Move Layer backwards',
+              onClick: () => this.canvasContainer.sendObjectBackward(),
             }, {
               type: 'trashBin',
               tooltip: 'Delete selected element',
@@ -37,6 +39,18 @@ class EditorView extends React.Component {
               type: 'upload',
               tooltip: 'Upload image',
             },
+            ]}
+          />
+          <EditorButtonGroup
+            buttons={[
+              {
+                type: 'text',
+                tooltip: 'Change text font',
+              }, {
+                type: 'color',
+                tooltip: 'Select Element Color',
+                onChange: (color) => this.canvasContainer.onChangeTextColor(color),
+              },
             ]}
           />
         </div>
@@ -96,18 +110,3 @@ EditorView.propTypes = {
 
 
 export default EditorView;
-
-
-                // <Canvas
-                //   width={400}
-                //   ref="canvas"
-                //   height={400}
-                // >
-                //   <Image
-                //     src="http://i.imgur.com/jZsNUCi.jpg"
-                //     width={300}
-                //     height={300}
-                //     left={0}
-                //     top={500}
-                //   />
-                // </Canvas>

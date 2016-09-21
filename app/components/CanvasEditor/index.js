@@ -4,6 +4,36 @@ const fabric = require('fabric').fabric;
 class CanvasEditor extends React.Component {
   componentDidMount() {
     this.canvas = new fabric.Canvas('c');
+    this.canvas.on({
+      'object:selected': this.onSelectTextElement,
+    });
+  }
+
+  onSelectTextElement(evt) {
+  }
+
+  onChangeTextColor(color) {
+    const text = this.canvas.getActiveObject();
+    if (text) {
+      text.set('fill', color);
+      this.canvas.renderAll();
+    }
+  }
+
+  sendObjectBackward() {
+    const object = this.canvas.getActiveObject();
+    if (object) {
+      object.sendBackwards();
+      this.canvas.renderAll();
+    }
+  }
+
+  sendObjectForward() {
+    const object = this.canvas.getActiveObject();
+    if (object) {
+      object.bringForward();
+      this.canvas.renderAll();
+    }
   }
 
   addTextElement() {

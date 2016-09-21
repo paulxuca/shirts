@@ -24,6 +24,10 @@
   position: relative;
 }
 
+.editorButtonContainer button:focus {
+  outline: 0;
+}
+
 .editorButtonGroup li:hover span {
   opacity: 1;
   transition: 150ms ease-out;

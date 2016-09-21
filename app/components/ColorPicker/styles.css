@@ -1,0 +1,23 @@
+.colorPickerLI {
+  height: 40px;
+}
+
+.colorPickerCircle {
+  z-index: 2;
+  width: 21px;
+  height: 21px;
+  margin: 8px auto 7px;
+  border-radius: 20px;
+  box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.15), inset -1px -1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.colorPickerContainerOverlay>div {
+  position: relative;
+  top: 175px;
+  left: 90px;
+}
+
+.colorPickerContainer {
+  position: absolute;
+  z-index: 2;
+}
