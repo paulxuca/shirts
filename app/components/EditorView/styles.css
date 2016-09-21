@@ -71,3 +71,7 @@
   flex: 1;
   margin: 30px 0px;
 }
+
+.hiddenFileUpload {
+  display: none;
+}

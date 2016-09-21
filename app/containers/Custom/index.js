@@ -3,12 +3,14 @@ import {
   selectTopLevelTab,
   selectLowLevelTab,
   selectCurrentProduct,
+  selectNewestUploadedImage,
 } from './selectors';
 import {
   changeTopLevelTab,
   changeLowLevelTab,
   selectNewProduct,
   selectNewProductColor,
+  uploadImageInit,
 } from './actions';
 import {
   lowLevelTabs,
@@ -66,10 +68,15 @@ class Custom extends React.Component {
           </div>
         </div>
         <div className={styles.customContainer__preview}>
-          <EditorView
-            data={this.props.currentProduct}
-            selectNewColor={this.props.selectNewProductColor}
-          />
+          {this.props.currentProduct ?
+            <EditorView
+              data={this.props.currentProduct}
+              selectNewColor={this.props.selectNewProductColor}
+              onImageUpload={(fileName, imageData) => this.props.uploadImageInit(fileName, imageData)}
+              newestImageUploadUrl={this.props.newestUploadedImage}
+            />
+            :
+            null}
         </div>
       </div>
     );
@@ -87,12 +94,18 @@ Custom.propTypes = {
   ]),
   selectNewProduct: React.PropTypes.func,
   selectNewProductColor: React.PropTypes.func,
+  uploadImageInit: React.PropTypes.func,
+  newestUploadedImage: React.PropTypes.oneOfType([
+    React.PropTypes.bool,
+    React.PropTypes.string,
+  ]),
 };
 
 const mapStateToProps = createStructuredSelector({
   topLevelTab: selectTopLevelTab(),
   lowLevelTab: selectLowLevelTab(),
   currentProduct: selectCurrentProduct(),
+  newestUploadedImage: selectNewestUploadedImage(),
 });
 
 function mapActionsToProps(dispatch) {
@@ -101,6 +114,7 @@ function mapActionsToProps(dispatch) {
     changeLowLevelTab: (newTab) => dispatch(changeLowLevelTab(newTab)),
     selectNewProduct: (newProduct) => dispatch(selectNewProduct(newProduct)),
     selectNewProductColor: (nPC) => dispatch(selectNewProductColor(nPC)),
+    uploadImageInit: (fileName, imageData) => dispatch(uploadImageInit(fileName, imageData)),
   };
 }
 

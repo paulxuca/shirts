@@ -9,7 +9,8 @@ class CanvasEditor extends React.Component {
     });
   }
 
-  onSelectTextElement(evt) {
+  onSelectTextElement() {
+  
   }
 
   onChangeTextColor(color) {
@@ -18,6 +19,20 @@ class CanvasEditor extends React.Component {
       text.set('fill', color);
       this.canvas.renderAll();
     }
+  }
+
+  addNewImageElement(url) {
+    fabric.util.loadImage(url, (img) => {
+      const legimg = new fabric.Image(img, {
+        left: 100,
+        top: 100,
+        width: img.width / 5,
+        height: img.height / 5,
+      });
+      this.canvas.add(legimg);
+      this.canvas.bringToFront(legimg);
+      this.canvas.renderAll();
+    });
   }
 
   sendObjectBackward() {

@@ -3,7 +3,34 @@ import {
   CHANGE_TAB_LL,
   SELECT_NEW_PRODUCT,
   SELECT_NEW_PRODUCT_COLOR,
+  UPLOAD_IMAGE_ERROR,
+  UPLOAD_IMAGE_INIT,
+  UPLOAD_IMAGE_SUCCESS,
 } from './constants';
+
+export function uploadImageInit(fileName, imageData) {
+  return {
+    type: UPLOAD_IMAGE_INIT,
+    payload: {
+      fileName,
+      imageData,
+    },
+  };
+}
+
+export function uploadImageSuccess(url) {
+  return {
+    type: UPLOAD_IMAGE_SUCCESS,
+    payload: url,
+  };
+}
+
+export function uploadImageError(error) {
+  return {
+    type: UPLOAD_IMAGE_ERROR,
+    payload: error,
+  };
+}
 
 export function selectNewProductColor(newProductColor) {
   return {

@@ -5,11 +5,45 @@ import EditorButtonGroup from 'components/EditorButtonGroup';
 
 
 class EditorView extends React.Component {
+  constructor() {
+    super();
+    this.onSelectFile = this.onSelectFile.bind(this);
+  }
+
+  componentDidMount() {
+    document.getElementById('hiddenFileUpload').addEventListener('change', this.onSelectFile);
+  }
+
+  componentWillReceiveProps(nP) {
+    if (nP.newestImageUploadUrl !== this.props.newestImageUploadUrl) {
+      this.canvasContainer.addNewImageElement(nP.newestImageUploadUrl);
+    }
+  }
+
+  componentWillUnmount() {
+    document.getElementById('hiddenFileUpload').removeEventListener('change', this.onSelectFile);
+  }
+
+  onClickFileUpload() {
+    document.getElementById('hiddenFileUpload').click();
+  }
+
+  onSelectFile(e) {
+    const fileReader = new FileReader();
+
+    fileReader.addEventListener('load', () => {
+      this.props.onImageUpload(e.target.files[0].name, fileReader.result);
+    });
+
+    if (e.target.files[0]) {
+      fileReader.readAsDataURL(e.target.files[0]);
+    }
+  }
+
   selectNewcolor(nC) {
     const newColorImage = this.props.data.variants.find((each) => each.name === nC).image;
     this.props.selectNewColor(newColorImage);
   }
-
 
   renderEditorView() {
     return (
@@ -38,6 +72,7 @@ class EditorView extends React.Component {
             }, {
               type: 'upload',
               tooltip: 'Upload image',
+              onClick: () => this.onClickFileUpload(),
             },
             ]}
           />
@@ -52,6 +87,12 @@ class EditorView extends React.Component {
                 onChange: (color) => this.canvasContainer.onChangeTextColor(color),
               },
             ]}
+          />
+          <input
+            type="file"
+            className={styles.hiddenFileUpload}
+            id="hiddenFileUpload"
+            accept="image/*"
           />
         </div>
         <div className={styles.previewContainer}>
@@ -106,6 +147,11 @@ EditorView.propTypes = {
     React.PropTypes.object,
   ]),
   selectNewColor: React.PropTypes.func,
+  onImageUpload: React.PropTypes.func,
+  newestImageUploadUrl: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.bool,
+  ]),
 };
 
 
