@@ -13,15 +13,16 @@
 
 .fontPickerDropdown {
   height: 200px;
-  top: 10px;
+  top: 20px;
   position: absolute;
-  width: 180px;
+  width: 150px;
   z-index: 3;
   background-color: white;
   box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   overflow: scroll;
+  left: -20px;
 }
 
 .fontList {

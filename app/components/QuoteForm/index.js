@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.css';
+import QuoteFormInput from 'components/QuoteFormInput';
 
 class QuoteForm extends React.Component {
   onChangeValues(newValue, size) {
@@ -15,18 +16,12 @@ class QuoteForm extends React.Component {
           <span className={styles.productName}>{productData.name}</span>
           <div className={styles.quoteFormSizes}>
             {productData.sizes.map((each) =>
-              <div className={styles.sizeInputCard} key={each}>
-                <div className={styles.sizeInputCardContainer}>
-                  <span className={styles.sizeText}>{each}</span>
-                  <input
-                    type="number"
-                    className={styles.orderQuantityInputfield}
-                    min="0"
-                    value={sizeData[each] || 0}
-                    onChange={(e) => this.onChangeValues(e.target.value, each)}
-                  />
-                </div>
-              </div>
+              <QuoteFormInput
+                value={sizeData[each]}
+                onChange={(e) => this.onChangeValues(e.target.value, each)}
+                size={each}
+                key={each}
+              />
             )}
           </div>
         </div>
