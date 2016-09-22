@@ -10,10 +10,13 @@ class QuoteForm extends React.Component {
   renderOrderForm() {
     const { productData, sizeData } = this.props;
     return (
-      <div className={styles.quoteFormContainer}>
-        <div className={styles.quoteForm}>
+      <div className={styles.quoteForm}>
+        <div className={styles.quoteFormHeader}>
           <span className={styles.productNameHeader}>Order Details for</span>
           <span className={styles.productName}>{productData.name}</span>
+        </div>
+        <div className={styles.quoteFormContainer}>
+          <span className={styles.productNameHeader}>Order Sizes</span>
           <div className={styles.quoteFormSizes}>
             {productData.sizes.map((each) =>
               <QuoteFormInput
@@ -24,6 +27,9 @@ class QuoteForm extends React.Component {
               />
             )}
           </div>
+        </div>
+        <div className={styles.quoteFormDetails}>
+
         </div>
       </div>
     );

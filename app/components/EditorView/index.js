@@ -8,10 +8,12 @@ class EditorView extends React.Component {
   constructor() {
     super();
     this.onSelectFile = this.onSelectFile.bind(this);
+    this.onKeyDownOnCanvas = this.onKeyDownOnCanvas.bind(this);
   }
 
   componentDidMount() {
     document.getElementById('hiddenFileUpload').addEventListener('change', this.onSelectFile);
+    document.body.addEventListener('keydown', this.onKeyDownOnCanvas, { passive: true });
   }
 
   componentWillReceiveProps(nP) {
@@ -22,6 +24,13 @@ class EditorView extends React.Component {
 
   componentWillUnmount() {
     document.getElementById('hiddenFileUpload').removeEventListener('change', this.onSelectFile);
+    document.body.addEventListener('keydown', this.onKeyDownOnCanvas, { passive: true });
+  }
+
+  onKeyDownOnCanvas(e) {
+    if (e.keyCode === 8 || e.keyCode === 46) {
+      this.canvasContainer.deleteActiveObject();
+    }
   }
 
   onClickFileUpload() {
@@ -104,6 +113,7 @@ class EditorView extends React.Component {
                 }}
               >
                 <div
+                  id="canvasContainer"
                   className={styles.canvasContainer}
                 >
                   <CanvasEditor

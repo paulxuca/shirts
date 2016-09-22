@@ -100,7 +100,12 @@ class Custom extends React.Component {
                 </div>
               : null
               }
-              <div className={styles.containerItemsContainer}>
+              <div
+                className={styles.containerItemsContainer}
+                style={{
+                  padding: this.props.topLevelTab !== 'detail' ? 20 : 0,
+                }}
+              >
                   {this.renderContentContainer()}
               </div>
             </div>
