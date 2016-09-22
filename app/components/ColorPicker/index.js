@@ -32,12 +32,6 @@ class ColorPicker extends React.Component {
     this.props.onChange(color.hex);
   }
 
-  toggleColorPicker = () => {
-    this.setState({
-      colorPickerOpen: !this.state.colorPickerOpen,
-    });
-  }
-
   toggleClosePicker = () => {
     this.setState({
       colorPickerOpen: false,
@@ -49,7 +43,7 @@ class ColorPicker extends React.Component {
       <li className={styles.colorPickerLI}>
         <div
           className={styles.colorPickerCircle}
-          onClick={this.toggleColorPicker}
+          onClick={() => this.setState({ colorPickerOpen: !this.state.colorPickerOpen })}
           style={{
             backgroundColor: this.state.value.hex,
           }}

@@ -10,6 +10,7 @@
   letter-spacing: 1px;
   color: #CCC;
   transition: 0.3s;
+  user-select: none;
 }
 
 .containerTab:hover:not(.containerTab__selected) {

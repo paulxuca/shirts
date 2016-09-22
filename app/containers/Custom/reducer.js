@@ -4,12 +4,18 @@ import {
   SELECT_NEW_PRODUCT,
   SELECT_NEW_PRODUCT_COLOR,
   UPLOAD_IMAGE_SUCCESS,
-  UPLOAD_IMAGE_ERROR
+  UPLOAD_IMAGE_ERROR,
+  CHANGE_ORDER_QUANTITY,
 } from './constants';
 import {
   fromJS,
 } from 'immutable';
 
+
+const initialStateLower = {
+  apparel: 'sweater',
+  element: 'all',
+};
 
 const initialState = fromJS({
   currentTopLevelTab: 'apparel',
@@ -17,12 +23,15 @@ const initialState = fromJS({
   currentSelectedProduct: false,
   newestProductUploaded: false,
   uploadErrors: false,
+  orderQuantityData: {},
 });
 
 export default function customReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_TAB_TL:
-      return state.set('currentTopLevelTab', action.payload);
+      return state
+        .set('currentTopLevelTab', action.payload)
+        .set('currentLowLevelTab', initialStateLower[action.payload]);
     case CHANGE_TAB_LL:
       return state.set('currentLowLevelTab', action.payload);
     case SELECT_NEW_PRODUCT:
@@ -33,6 +42,8 @@ export default function customReducer(state = initialState, action) {
       return state.set('uploadErrors', action.payload);
     case SELECT_NEW_PRODUCT_COLOR:
       return state.set('currentSelectedProduct', { ...state.get('currentSelectedProduct'), image: action.payload });
+    case CHANGE_ORDER_QUANTITY: // eslint-disable-line
+      return state.set('orderQuantityData', { ...state.get('orderQuantityData'), ...action.payload });
     default:
       return state;
   }

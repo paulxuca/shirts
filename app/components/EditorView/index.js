@@ -79,11 +79,10 @@ class EditorView extends React.Component {
           <EditorButtonGroup
             buttons={[
               {
-                type: 'text',
-                tooltip: 'Change text font',
+                type: 'font',
+                onChange: (newFontFamily) => this.canvasContainer.onChangeFontFamily(newFontFamily),
               }, {
                 type: 'color',
-                tooltip: 'Select Element Color',
                 onChange: (color) => this.canvasContainer.onChangeTextColor(color),
               },
             ]}

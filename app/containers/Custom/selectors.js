@@ -24,9 +24,15 @@ const selectNewestUploadedImage = () => createSelector(
   (substate) => substate.get('newestProductUploaded')
 );
 
+const selectOrderQuantityData = () => createSelector(
+  selectCustomReducer(),
+  (substate) => substate.get('orderQuantityData'),
+);
+
 export {
   selectTopLevelTab,
   selectLowLevelTab,
   selectCurrentProduct,
   selectNewestUploadedImage,
+  selectOrderQuantityData,
 };

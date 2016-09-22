@@ -9,7 +9,7 @@ const topLevelTabs = [
   },
   {
     id: 'detail',
-    name: 'Review Details',
+    name: 'Product and Order Details',
   },
 ];
 
@@ -29,6 +29,15 @@ const lowLevelTabs = {
       id: 'accessory',
     },
   ],
+  element: [
+    {
+      name: 'All',
+      id: 'all',
+    }, {
+      name: 'Emoji',
+      id: 'emoji',
+    },
+  ],
 };
 
 const apparelTypes = {
@@ -38,14 +47,7 @@ const apparelTypes = {
       name: 'Gilden sweater techno defender sample',
       default: 0,
       price: 23.99,
-      defaultPosition: {
-        top: 100,
-        left: 100,
-        canvas: {
-          height: 500,
-          width: 300,
-        },
-      },
+      sizes: ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'],
       variants: [
         {
           name: 'navy',
@@ -65,14 +67,7 @@ const apparelTypes = {
       name: 'Gilden quarter zip fleece sweater',
       default: 0,
       price: 30.99,
-      defaultPosition: {
-        top: 100,
-        left: 100,
-        canvas: {
-          height: 500,
-          width: 300,
-        },
-      },
+      sizes: ['xxs', 'xs', 's', 'm', 'l', 'xl'],
       variants: [
         {
           name: 'red',
@@ -90,14 +85,7 @@ const apparelTypes = {
       name: 'Gilden t-shirt 2001',
       default: 0,
       price: 13.99,
-      defaultPosition: {
-        top: 200,
-        left: 125,
-        canvas: {
-          height: 300,
-          width: 150,
-        },
-      },
+      sizes: ['xxs', 'xs', 's', 'm', 'l', 'xl'],
       variants: [
         {
           name: 'white',

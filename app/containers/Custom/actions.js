@@ -6,7 +6,17 @@ import {
   UPLOAD_IMAGE_ERROR,
   UPLOAD_IMAGE_INIT,
   UPLOAD_IMAGE_SUCCESS,
+  CHANGE_ORDER_QUANTITY,
 } from './constants';
+
+export function changeOrderQuantity(size, newValue) {
+  const newSizeObject = {};
+  newSizeObject[size] = newValue;
+  return {
+    type: CHANGE_ORDER_QUANTITY,
+    payload: newSizeObject,
+  };
+}
 
 export function uploadImageInit(fileName, imageData) {
   return {

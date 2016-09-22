@@ -1,3 +1,34 @@
 .fontPickerLI {
   height: 40px;
 }
+
+.fontPickerLI:hover svg path {
+  fill:#FFCB00;
+}
+
+.fontPickerContainer {
+  position: absolute;
+  z-index: 3;
+}
+
+.fontPickerDropdown {
+  height: 200px;
+  top: 10px;
+  position: absolute;
+  width: 180px;
+  z-index: 3;
+  background-color: white;
+  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.fontList {
+  padding: 0px;
+}
+
+.fontList li:hover {
+  background-color: #FFCB00;
+  color: white;
+}

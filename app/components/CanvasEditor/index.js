@@ -9,14 +9,18 @@ class CanvasEditor extends React.Component {
     });
   }
 
-  onSelectTextElement() {
-  
-  }
-
   onChangeTextColor(color) {
     const text = this.canvas.getActiveObject();
     if (text) {
       text.set('fill', color);
+      this.canvas.renderAll();
+    }
+  }
+
+  onChangeFontFamily(newFontFamily) {
+    const object = this.canvas.getActiveObject();
+    if (object) {
+      object.fontFamily = newFontFamily;
       this.canvas.renderAll();
     }
   }
@@ -28,6 +32,7 @@ class CanvasEditor extends React.Component {
         top: 100,
         width: img.width / 5,
         height: img.height / 5,
+        lockUniScaling: true,
       });
       this.canvas.add(legimg);
       this.canvas.bringToFront(legimg);

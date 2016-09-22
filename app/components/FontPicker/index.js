@@ -1,16 +1,79 @@
 import React from 'react';
 import styles from './styles.css';
+import Icon from 'components/Icon';
+import { fonts } from './mock';
 
 
 class FontPicker extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      fontPickerOpen: false,
+    };
+  }
+
+  componentDidMount() {
+    document.body.addEventListener('click', this.onClickEditor);
+  }
+
+  componentWillUnmount() {
+    document.body.addEventListener('click', this.onClickEditor);
+  }
+
+  onClickEditor = (e) => {
+    if (this.fontPicker && !this.fontPicker.contains(e.target) && this.state.fontPickerOpen) {
+      this.toggleClosePicker();
+    }
+  }
+
+  toggleClosePicker = () => {
+    this.setState({
+      fontPickerOpen: false,
+    });
+  }
+
+  renderFontPicker() {
+    return (
+      <div className={styles.fontPickerDropdown}>
+        <ul
+          className={styles.fontList}
+          ref={(fontPicker) => this.fontPicker = fontPicker}
+        >
+          {fonts.map((each) =>
+            <li
+              key={each}
+              style={{
+                fontFamily: each,
+              }}
+              onClick={() => this.props.onChange(each)}
+            >
+              {each}
+            </li>
+          )}
+        </ul>
+      </div>
+    );
+  }
+
   render() {
     return (
-      <li className={styles.fontPickerLI}>
-
-
+      <li
+        className={styles.fontPickerLI}
+        onClick={() => this.setState({ fontPickerOpen: !this.state.fontPickerOpen })}
+      >
+        <Icon
+          type="text"
+        />
+        <div className={styles.fontPickerContainer}>
+            {this.state.fontPickerOpen ? this.renderFontPicker() : null}
+        </div>
       </li>
     );
   }
 }
+
+FontPicker.propTypes = {
+  onChange: React.PropTypes.func,
+};
 
 export default FontPicker;
