@@ -1,7 +1,7 @@
 const router = require('express').Router(); // eslint-disable-line new-cap
 const AWS = require('aws-sdk');
 const path = require('path');
-AWS.config.loadFromPath(path.join(__dirname, './s3config.json'));
+AWS.config.loadFromPath('./s3config.json');
 const s3Bucket = new AWS.S3({ params: { Bucket: 'shirts.qthreads' } });
 
 
