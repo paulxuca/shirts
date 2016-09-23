@@ -44,6 +44,7 @@
   font-weight: 400;
   display: block;
   letter-spacing: 1px;
+  margin: 5px 0px;
 }
 
 .quoteFormDetails {
@@ -62,4 +63,8 @@
 .totalCostText {
   font-size: 30px;
   display: block;
+}
+
+.personalizationPrice {
+  color: #CCC;
 }

@@ -23,7 +23,10 @@ const initialState = fromJS({
   currentSelectedProduct: false,
   newestProductUploaded: false,
   uploadErrors: false,
-  orderQuantityData: {},
+  orderQuantityData: {
+    addNames: false,
+    addNumbers: false,
+  },
 });
 
 export default function customReducer(state = initialState, action) {
