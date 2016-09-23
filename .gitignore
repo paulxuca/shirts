@@ -9,3 +9,5 @@ stats.json
 npm-debug.log
 .idea
 
+#AMAZONs3
+s3config.json
