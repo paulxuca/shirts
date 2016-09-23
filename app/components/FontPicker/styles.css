@@ -25,6 +25,10 @@
   left: -20px;
 }
 
+.fontPickerDropdown li {
+  border-bottom: 1px solid #CCC;
+}
+
 .fontList {
   padding: 0px;
 }

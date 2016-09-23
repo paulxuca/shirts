@@ -42,8 +42,8 @@ export default function customReducer(state = initialState, action) {
       return state.set('uploadErrors', action.payload);
     case SELECT_NEW_PRODUCT_COLOR:
       return state.set('currentSelectedProduct', { ...state.get('currentSelectedProduct'), image: action.payload });
-    case CHANGE_ORDER_QUANTITY: // eslint-disable-line
-      return state.set('orderQuantityData', { ...state.get('orderQuantityData'), ...action.payload });
+    case CHANGE_ORDER_QUANTITY:
+      return state.set('orderQuantityData', state.get('orderQuantityData').merge(action.payload));
     default:
       return state;
   }

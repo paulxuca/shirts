@@ -70,7 +70,8 @@ class CanvasEditor extends React.Component {
 
     this.canvas.discardActiveGroup();
     if (activeObject) return this.canvas.remove(activeObject);
-    return activeObjectGroup.getObjects().forEach((each) => this.canvas.remove(each));
+    if (activeObjectGroup) return activeObjectGroup.getObjects().forEach((each) => this.canvas.remove(each));
+    return null;
   }
 
   render() {

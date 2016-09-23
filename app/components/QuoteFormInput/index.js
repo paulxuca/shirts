@@ -6,7 +6,7 @@ function QuoteFormInput({ value, onChange, size }) {
     <div
       className={styles.sizeInputCard}
       style={{
-        borderLeftWidth: value && Number(value) !== 0 ? '10px' : '3px',
+        borderLeftWidth: value && Number(value) !== 0 ? '8px' : '3px',
       }}
     >
       <div className={styles.sizeInputCardContainer}>
