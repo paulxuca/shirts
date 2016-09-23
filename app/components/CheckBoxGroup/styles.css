@@ -1,0 +1,53 @@
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  margin-right: 10px;
+  border: 1px solid #000;
+}
+
+.checkboxGroup {
+  flex: 1;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.personalizationOptions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.checkmark {
+    position: relative;
+    display:inline-block;
+    width: 22px;
+    height:22px;
+    top: -3px;
+    left: -2px;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
+.checkmark:before {
+    content: "";
+    position: absolute;
+    width:3px;
+    height:9px;
+    background-color:#000;
+    left:11px;
+    top:6px;
+}
+
+.checkmark:after {
+    content:"";
+    position: absolute;
+    width:3px;
+    height:3px;
+    background-color:#000;
+    left:8px;
+    top:12px;
+}
