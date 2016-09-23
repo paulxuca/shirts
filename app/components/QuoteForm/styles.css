@@ -68,3 +68,21 @@
 .personalizationPrice {
   color: #CCC;
 }
+
+.personalizationOptions {
+  margin: 10px 0px;
+}
+
+.textAreaNotes {
+  width: 100%;
+  resize: none;
+  min-height: 200px;
+  border-radius: 3px;
+  border: 1px #D2D6DF solid;
+  padding: 10px;
+}
+
+.textAreaNotes:focus {
+  outline: 0;
+  border: 1px solid #00a8f2;
+}

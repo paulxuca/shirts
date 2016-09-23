@@ -5,16 +5,14 @@ import CheckBoxGroup from 'components/CheckBoxGroup';
 
 function calculateOrderCost(items, cost) {
   const totalItems = items.reduce((total, each) => {
-    if (typeof each !== 'boolean') {
+    if (typeof each === 'number') {
       return total + Number(each);
     }
     return total;
-  });
-  return {
-    totalCost: totalItems * cost,
-    namesCost: totalItems * 4.5,
-    numbersCost: totalItems * 4.5,
-  };
+  }, 0);
+  const numbersCost = (items.get('addNumbers')) ? (totalItems * 2.5) : 0;
+  const namesCost = (items.get('addNames')) ? (totalItems * 4.5) : 0;
+  return ((totalItems * cost) + numbersCost + namesCost).toFixed(2);
 }
 
 
@@ -38,7 +36,7 @@ class QuoteForm extends React.Component {
               {productData.sizes.map((each) =>
                 <QuoteFormInput
                   value={sizeData.get(each)}
-                  onChange={(e) => this.onChangeValues(e.target.value, each)}
+                  onChange={(e) => this.onChangeValues(Number(e.target.value), each)}
                   size={each}
                   key={each}
                 />
@@ -47,24 +45,43 @@ class QuoteForm extends React.Component {
             <div className={styles.personalizationOptions}>
               <span className={styles.productNameHeader}>Personalization Options</span>
               <CheckBoxGroup
-                active={!!sizeData.get('addNames')}
+                active={sizeData.get('addNames')}
                 onChange={() => this.onChangeValues(!sizeData.get('addNames'), 'addNames')}
               >
                 <span>Add Names <span className={styles.personalizationPrice}>$4.50 per item</span></span>
               </CheckBoxGroup>
               <CheckBoxGroup
-                active={!!sizeData.get('addNumbers')}
+                active={sizeData.get('addNumbers')}
                 onChange={() => this.onChangeValues(!sizeData.get('addNumbers'), 'addNumbers')}
               >
                 <span>Add Numbers <span className={styles.personalizationPrice}>$2.50 per item</span></span>
               </CheckBoxGroup>
+            </div>
+            {sizeData.get('addNames') || sizeData.get('addNumbers') ?
+              <div className={styles.personalizationOptions}>
+                <span className={styles.productNameHeader}>Personalization Notes</span>
+                <textarea
+                  className={styles.textAreaNotes}
+                  placeholder="Include details about names, numbers and design details"
+                  value={sizeData.get('personalizationNotes')}
+                  onChange={(e) => this.onChangeValues(e.target.value, 'personalizationNotes')}
+                />
+              </div> : null}
+            <div className={styles.personalizationOptions}>
+              <span className={styles.productNameHeader}>Additional Notes</span>
+              <textarea
+                className={styles.textAreaNotes}
+                placeholder="Enter notes to our production team"
+                value={sizeData.get('additionalNotes')}
+                onChange={(e) => this.onChangeValues(e.target.value, 'additionalNotes')}
+              />
             </div>
           </div>
         </div>
         <div className={styles.quoteFormDetails}>
           <div className={styles.quoteFormDetailsContainer}>
             <span className={styles.productNameHeader}>Total Cost</span>
-            <span className={styles.totalCostText}>${calculateOrderCost(sizeData, productData.price).totalCost}</span>
+            <span className={styles.totalCostText}>${calculateOrderCost(sizeData, productData.price)}</span>
           </div>
         </div>
       </div>

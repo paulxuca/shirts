@@ -24,7 +24,7 @@ function QuoteFormInput({ value, onChange, size }) {
 }
 
 QuoteFormInput.propTypes = {
-  value: React.PropTypes.string,
+  value: React.PropTypes.number,
   onChange: React.PropTypes.func,
   size: React.PropTypes.string,
 };
