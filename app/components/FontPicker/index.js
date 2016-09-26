@@ -11,6 +11,8 @@ class FontPicker extends React.Component {
     this.state = {
       fontPickerOpen: false,
     };
+    this.onClickEditor = this.onClickEditor.bind(this);
+    this.toggleClosePicker = this.toggleClosePicker.bind(this);
   }
 
   componentDidMount() {
@@ -21,13 +23,13 @@ class FontPicker extends React.Component {
     document.body.addEventListener('click', this.onClickEditor);
   }
 
-  onClickEditor = (e) => {
+  onClickEditor(e) {
     if (this.fontPicker && !this.fontPicker.contains(e.target) && this.state.fontPickerOpen) {
       this.toggleClosePicker();
     }
   }
 
-  toggleClosePicker = () => {
+  toggleClosePicker() {
     this.setState({
       fontPickerOpen: false,
     });
