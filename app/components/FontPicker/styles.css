@@ -2,6 +2,14 @@
   height: 40px;
 }
 
+.editorButtonContainer {
+  position: relative;
+}
+
+.editorButtonContainer button:focus {
+  outline: 0;
+}
+
 .fontPickerLI:hover svg path {
   fill:#FFCB00;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles.css';
 import QuoteFormInput from 'components/QuoteFormInput';
 import CheckBoxGroup from 'components/CheckBoxGroup';
+import Icon from 'components/Icon';
 
 function calculateOrderCost(items, cost) {
   const totalItems = items.reduce((total, each) => {
@@ -80,8 +81,21 @@ class QuoteForm extends React.Component {
         </div>
         <div className={styles.quoteFormDetails}>
           <div className={styles.quoteFormDetailsContainer}>
-            <span className={styles.productNameHeader}>Total Cost</span>
-            <span className={styles.totalCostText}>${calculateOrderCost(sizeData, productData.price)}</span>
+            <div
+              style={{
+                flex: 1
+              }}
+            >
+              <span className={styles.productNameHeader}>Total Cost</span>
+              <span className={styles.totalCostText}>${calculateOrderCost(sizeData, productData.price)}</span>
+            </div>
+            <div
+              style={{
+                flex: 1,
+              }}
+            >
+              <Icon type="shoppingCart" />
+            </div>
           </div>
         </div>
       </div>

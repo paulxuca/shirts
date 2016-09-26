@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.css';
 import Icon from 'components/Icon';
+import EditorButtonGroupTooltip from 'components/EditorButtonGroupTooltip';
 import { fonts } from './mock';
 
 
@@ -59,11 +60,19 @@ class FontPicker extends React.Component {
     return (
       <li
         className={styles.fontPickerLI}
-        onClick={() => this.setState({ fontPickerOpen: !this.state.fontPickerOpen })}
       >
-        <Icon
-          type="text"
-        />
+        <div className={styles.editorButtonContainer}>
+          <EditorButtonGroupTooltip
+            text="Change text font"
+          />
+          <button
+            onClick={() => this.setState({ fontPickerOpen: !this.state.fontPickerOpen })}
+          >
+            <Icon
+              type="text"
+            />
+          </button>
+        </div>
         <div className={styles.fontPickerContainer}>
             {this.state.fontPickerOpen ? this.renderFontPicker() : null}
         </div>

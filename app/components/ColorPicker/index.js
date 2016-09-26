@@ -41,13 +41,18 @@ class ColorPicker extends React.Component {
   render() {
     return (
       <li className={styles.colorPickerLI}>
-        <div
-          className={styles.colorPickerCircle}
-          onClick={() => this.setState({ colorPickerOpen: !this.state.colorPickerOpen })}
-          style={{
-            backgroundColor: this.state.value.hex,
-          }}
-        />
+        <div className={styles.editorButtonContainer}>
+          <button
+            onClick={() => this.setState({ colorPickerOpen: !this.state.colorPickerOpen })}
+          >
+            <div
+              className={styles.colorPickerCircle}
+              style={{
+                backgroundColor: this.state.value.hex,
+              }}
+            />
+          </button>
+        </div>
         <div className={styles.colorPickerContainer}>
           <div
             className={styles.colorPickerContainerOverlay}

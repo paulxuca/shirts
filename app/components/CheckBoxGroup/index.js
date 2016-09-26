@@ -3,11 +3,11 @@ import styles from './styles.css';
 
 function CheckBoxGroup({ onChange, active, children }) {
   return (
-    <div
-      className={styles.checkboxGroup}
-      onClick={onChange}
-    >
-      <span className={styles.checkbox}>
+    <div className={styles.checkboxGroup}>
+      <span
+        className={styles.checkbox}
+        onClick={onChange}
+      >
         {active ? <span className={styles.checkmark} /> : null}
       </span>
       {children}

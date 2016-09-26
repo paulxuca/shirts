@@ -8,9 +8,9 @@
   padding: 10px 15px;
   background-color: white;
   opacity: 0;
-  width: 140px;
+  width: 160px;
   text-align: center;
-  top: -13px;
+  top: -7px;
 }
 
 .buttonToolTip:before {

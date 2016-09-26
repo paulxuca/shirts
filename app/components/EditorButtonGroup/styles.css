@@ -28,6 +28,11 @@
   outline: 0;
 }
 
+.editorButtonGroup li div:hover span {
+  opacity: 1;
+  transition: 150ms ease-out;
+}
+
 .editorButtonGroup li:hover span {
   opacity: 1;
   transition: 150ms ease-out;
