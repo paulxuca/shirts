@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './styles.css';
 import QuoteFormInput from 'components/QuoteFormInput';
 import CheckBoxGroup from 'components/CheckBoxGroup';
-import Icon from 'components/Icon';
 import QuoteFormTable from 'components/QuoteFormTable';
+import RoundedButton from 'components/RoundedButton';
 
 function calculateOrderCost(items, cost) {
   const totalItems = calculateTotalItems(items);
@@ -93,7 +93,7 @@ class QuoteForm extends React.Component {
           <div className={styles.quoteFormDetailsContainer}>
             <div
               style={{
-                flex: 1
+                flex: 1,
               }}
             >
               <span className={styles.productNameHeader}>Total Cost</span>
@@ -102,9 +102,15 @@ class QuoteForm extends React.Component {
             <div
               style={{
                 flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
               }}
             >
-              <Icon type="shoppingCart" />
+              <RoundedButton
+                text="Add to Cart"
+                icon="shoppingCart"
+              />
             </div>
           </div>
         </div>

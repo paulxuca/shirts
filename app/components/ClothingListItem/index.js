@@ -25,7 +25,7 @@ function ClothingListItem({ onClickProduct, data }) {
       )}
       </div>
       <p className={styles.clothingItemText}>{data.name}</p>
-      <p className={styles.clothingItemPrice}>{data.price}</p>
+      <p className={styles.clothingItemPrice}><span style={{ fontSize: 12, fontWeight: 600, verticalAlign: 'top', lineHeight: 2.3, marginRight: 2 }}>$</span>{data.price}</p>
     </li>
   );
 }

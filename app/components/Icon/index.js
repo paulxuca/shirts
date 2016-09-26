@@ -19,6 +19,7 @@ function Icon({ type, style }) {
       height="17"
       viewBox="0 0 17 17"
       className={styles.svgIcon}
+      style={style}
     >
       {iconSet[type] ? iconSet[type] : ''}
     </svg>
@@ -27,6 +28,7 @@ function Icon({ type, style }) {
 
 Icon.propTypes = {
   type: React.PropTypes.string,
+  style: React.PropTypes.object,
 };
 
 

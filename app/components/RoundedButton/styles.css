@@ -1,0 +1,28 @@
+.buttonWrapper {
+  width: 160px;
+  height: 40px;
+  border: 2px solid #CCC;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.buttonWrapper button {
+  height: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  padding-left: 13px;
+  color: rgb(72, 72, 72);
+}
+
+.buttonWrapper:hover {
+  border-color: rgb(170, 170, 170);
+}
+
+.buttonWrapper button:focus {
+  outline: 0;
+}
+
+.buttonWrapper .iconWrapper {
+  height: inherit;
+  margin: 10px;
+}
