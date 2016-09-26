@@ -78,7 +78,7 @@
 .textAreaNotes {
   width: 100%;
   resize: none;
-  min-height: 200px;
+  min-height: 100px;
   border-radius: 3px;
   border: 1px #D2D6DF solid;
   padding: 10px;

@@ -3,17 +3,22 @@ import styles from './styles.css';
 import QuoteFormInput from 'components/QuoteFormInput';
 import CheckBoxGroup from 'components/CheckBoxGroup';
 import Icon from 'components/Icon';
+import QuoteFormTable from 'components/QuoteFormTable';
 
 function calculateOrderCost(items, cost) {
-  const totalItems = items.reduce((total, each) => {
+  const totalItems = calculateTotalItems(items);
+  const numbersCost = (items.get('addNumbers')) ? (totalItems * 2.5) : 0;
+  const namesCost = (items.get('addNames')) ? (totalItems * 4.5) : 0;
+  return ((totalItems * cost) + numbersCost + namesCost).toFixed(2);
+}
+
+function calculateTotalItems(items) {
+  return items.reduce((total, each) => {
     if (typeof each === 'number') {
       return total + Number(each);
     }
     return total;
   }, 0);
-  const numbersCost = (items.get('addNumbers')) ? (totalItems * 2.5) : 0;
-  const namesCost = (items.get('addNames')) ? (totalItems * 4.5) : 0;
-  return ((totalItems * cost) + numbersCost + namesCost).toFixed(2);
 }
 
 
@@ -27,7 +32,7 @@ class QuoteForm extends React.Component {
     return (
       <div className={styles.quoteForm}>
         <div className={styles.quoteFormHeader}>
-          <span className={styles.productNameHeader}>Order Details for</span>
+          <span className={styles.productNameHeader}>Order Details for your</span>
           <span className={styles.productName}>{productData.name}</span>
         </div>
         <div className={styles.quoteFormScroll}>
@@ -60,7 +65,12 @@ class QuoteForm extends React.Component {
             </div>
             {sizeData.get('addNames') || sizeData.get('addNumbers') ?
               <div className={styles.personalizationOptions}>
-                <span className={styles.productNameHeader}>Personalization Notes</span>
+                <span className={styles.productNameHeader}>Personalization Details</span>
+                <span style={{ color: '#CCC' }}>Enter your full list of names and numbers for accurate pricing</span>
+                <QuoteFormTable
+                  data={sizeData}
+                />
+                <span className={styles.productNameHeader}>Personalization Note</span>
                 <textarea
                   className={styles.textAreaNotes}
                   placeholder="Include details about names, numbers and design details"

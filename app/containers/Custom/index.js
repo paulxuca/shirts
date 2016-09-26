@@ -22,8 +22,7 @@ import {
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
-import TopLevelTab from 'components/TopLevelTab';
-import LowLevelTab from 'components/LowLevelTab';
+import SelectionTab from 'components/SelectionTab';
 import ClothingListItem from 'components/ClothingListItem';
 import EditorView from 'components/EditorView';
 import QuoteForm from 'components/QuoteForm';
@@ -31,24 +30,26 @@ import styles from './styles.css';
 
 class Custom extends React.Component {
   renderTopLevelTabs() {
-    return topLevelTabs.map((eachTLTab) =>
-      <TopLevelTab
-        key={eachTLTab.id}
-        type={eachTLTab.id}
-        children={eachTLTab.name}
-        isSelected={this.props.topLevelTab === eachTLTab.id}
-        onClick={(newTab) => this.props.changeTopLevelTab(newTab)}
+    return topLevelTabs.map((each) =>
+      <SelectionTab
+        tabType="topLevel"
+        key={each.id}
+        type={each.id}
+        children={each.name}
+        isSelected={this.props.topLevelTab === each.id}
+        onClick={this.props.changeTopLevelTab}
       />);
   }
 
   renderLowerLevelTabs() {
     return lowLevelTabs[this.props.topLevelTab].map((each) =>
-      <LowLevelTab
+      <SelectionTab
+        tabType="lowLevel"
         key={each.id}
         type={each.id}
         children={each.name}
         isSelected={this.props.lowLevelTab === each.id}
-        onClick={(newTab) => this.props.changeLowLevelTab(newTab)}
+        onClick={this.props.changeLowLevelTab}
       />);
   }
 

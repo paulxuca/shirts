@@ -1,0 +1,58 @@
+.topLevel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #CCC;
+  transition: 0.3s;
+  user-select: none;
+}
+
+.topLevel:hover:not(.containerTab__selected) {
+  color: #FFCB00;
+  transition: 0.3s;
+}
+
+.topLevelSelected {
+  composes: topLevel;
+  background-color: #FFCB00;
+  color: white;
+}
+
+.topLevel:first-child {
+  border-top-left-radius: 15px;
+}
+
+.topLevel:last-child {
+  border-top-right-radius: 15px;
+}
+
+.lowLevel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  text-transform: capitalize;
+  font-weight: 400;
+  color: #CCC;
+  user-select: none;
+}
+
+.lowLevel:hover {
+  color: #FFCB00;
+}
+
+.lowLevelSelected {
+  color: #FFCB00;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 10px;
+  border: 1px solid #FFCB00;
+}

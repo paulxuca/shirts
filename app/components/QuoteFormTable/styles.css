@@ -1,0 +1,35 @@
+.quoteFormTable {
+  width: 100%;
+  margin: 20px 0px 40px 0px;
+}
+
+.quoteFormTable thead {
+  font-weight: 500;
+  border-bottom: 2px solid rgb(128, 128, 128);
+}
+
+.quoteFormTable thead tr td {
+  padding: 10px;
+}
+
+.quoteFormTable tbody {
+  font-weight: 300;
+}
+
+.quoteFormTable tbody tr {
+  border-bottom: 1px solid rgb(128, 128, 128);
+}
+
+.quoteFormTable tbody tr td {
+  padding: 8px 0px;
+}
+
+.quoteFormTable tbody tr td input {
+  padding: 3px 15px;
+  border: 1px solid transparent;
+}
+
+.quoteFormTable tbody tr td input:focus {
+  outline: 0;
+  border: 1px solid #00a8f2;
+}
