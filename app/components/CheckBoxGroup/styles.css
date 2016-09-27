@@ -11,6 +11,8 @@
   flex-direction: row;
   display: flex;
   align-items: center;
+  margin-right: 10px;
+  max-width: 250px;
 }
 
 .personalizationOptions {

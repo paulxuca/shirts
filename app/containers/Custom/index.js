@@ -5,6 +5,7 @@ import {
   selectCurrentProduct,
   selectNewestUploadedImage,
   selectOrderQuantityData,
+  selectIsFetching,
 } from './selectors';
 import {
   changeTopLevelTab,
@@ -13,6 +14,7 @@ import {
   selectNewProductColor,
   uploadImageInit,
   changeOrderQuantity,
+  clickAddToCart,
 } from './actions';
 import {
   lowLevelTabs,
@@ -26,6 +28,7 @@ import SelectionTab from 'components/SelectionTab';
 import ClothingListItem from 'components/ClothingListItem';
 import EditorView from 'components/EditorView';
 import QuoteForm from 'components/QuoteForm';
+import Loading from 'react-loading-bar';
 import styles from './styles.css';
 
 class Custom extends React.Component {
@@ -69,6 +72,7 @@ class Custom extends React.Component {
         productData={this.props.currentProduct}
         sizeData={this.props.orderQuantityData}
         onChangeAmount={this.props.changeOrderQuantity}
+        onClickAddToCart={this.props.clickAddToCart}
       />
     );
   }
@@ -89,39 +93,45 @@ class Custom extends React.Component {
   render() {
     return (
       <div className={styles.customContainer}>
-        <div className={styles.customContainer__editor}>
-          <div className={styles.customContainer__editorWindow}>
-            <div className={styles.customContainer__editorWindowContainer}>
-              <div className={styles.containerTabContainer}>
-                {this.renderTopLevelTabs()}
-              </div>
-              {lowLevelTabs[this.props.topLevelTab] ?
-                <div className={styles.containerSubContainer}>
-                  {this.renderLowerLevelTabs()}
+        <Loading
+          show={this.props.isFetching}
+          color="red"
+        />
+        <div className={styles.customContainerContent}>
+          <div className={styles.customContainer__editor}>
+            <div className={styles.customContainer__editorWindow}>
+              <div className={styles.customContainer__editorWindowContainer}>
+                <div className={styles.containerTabContainer}>
+                  {this.renderTopLevelTabs()}
                 </div>
-              : null
-              }
-              <div
-                className={styles.containerItemsContainer}
-                style={{
-                  padding: this.props.topLevelTab !== 'detail' ? 20 : 0,
-                }}
-              >
-                  {this.renderContentContainer()}
+                {lowLevelTabs[this.props.topLevelTab] ?
+                  <div className={styles.containerSubContainer}>
+                    {this.renderLowerLevelTabs()}
+                  </div>
+                : null
+                }
+                <div
+                  className={styles.containerItemsContainer}
+                  style={{
+                    padding: this.props.topLevelTab !== 'detail' ? 20 : 0,
+                  }}
+                >
+                    {this.renderContentContainer()}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.customContainer__preview}>
-          {this.props.currentProduct ?
-            <EditorView
-              data={this.props.currentProduct}
-              selectNewColor={this.props.selectNewProductColor}
-              onImageUpload={(fileName, imageData) => this.props.uploadImageInit(fileName, imageData)}
-              newestImageUploadUrl={this.props.newestUploadedImage}
-            />
-            :
-            null}
+          <div className={styles.customContainer__preview}>
+            {this.props.currentProduct ?
+              <EditorView
+                data={this.props.currentProduct}
+                selectNewColor={this.props.selectNewProductColor}
+                onImageUpload={(fileName, imageData) => this.props.uploadImageInit(fileName, imageData)}
+                newestImageUploadUrl={this.props.newestUploadedImage}
+              />
+              :
+              null}
+          </div>
         </div>
       </div>
     );
@@ -146,6 +156,8 @@ Custom.propTypes = {
     React.PropTypes.string,
   ]),
   orderQuantityData: React.PropTypes.object,
+  isFetching: React.PropTypes.bool,
+  clickAddToCart: React.PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -154,6 +166,7 @@ const mapStateToProps = createStructuredSelector({
   currentProduct: selectCurrentProduct(),
   newestUploadedImage: selectNewestUploadedImage(),
   orderQuantityData: selectOrderQuantityData(),
+  isFetching: selectIsFetching(),
 });
 
 function mapActionsToProps(dispatch) {
@@ -164,6 +177,7 @@ function mapActionsToProps(dispatch) {
     selectNewProduct: (newProduct) => dispatch(selectNewProduct(newProduct)),
     selectNewProductColor: (nPC) => dispatch(selectNewProductColor(nPC)),
     uploadImageInit: (fileName, imageData) => dispatch(uploadImageInit(fileName, imageData)),
+    clickAddToCart: (tableData) => dispatch(clickAddToCart(tableData)),
   };
 }
 

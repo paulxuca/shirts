@@ -29,7 +29,7 @@
   width: 30px;
   border-radius: 30px;
   margin: 0 10px;
-  border-radius: 1px solid #CCC;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transition: 0.3s;
 }
 

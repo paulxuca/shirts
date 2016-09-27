@@ -29,10 +29,16 @@ const selectOrderQuantityData = () => createSelector(
   (substate) => substate.get('orderQuantityData'),
 );
 
+const selectIsFetching = () => createSelector(
+  selectCustomReducer(),
+  (substate) => substate.get('isFetching'),
+);
+
 export {
   selectTopLevelTab,
   selectLowLevelTab,
   selectCurrentProduct,
   selectNewestUploadedImage,
   selectOrderQuantityData,
+  selectIsFetching,
 };

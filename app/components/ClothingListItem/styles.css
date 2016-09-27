@@ -30,15 +30,16 @@
   font-size: 12px;
   text-align: center;
   margin-top: 0px;
-  font-weight: 500;  
+  font-weight: 400;  
   margin: 10px;
+  color: #2b3033;
 }
 
 .clothingItemPrice {
   text-align: center;
   font-size: 20px;
   margin: 0px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 

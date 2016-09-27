@@ -7,7 +7,15 @@ import {
   UPLOAD_IMAGE_INIT,
   UPLOAD_IMAGE_SUCCESS,
   CHANGE_ORDER_QUANTITY,
+  CLICK_ADDTOCART,
 } from './constants';
+
+export function clickAddToCart(tableData) {
+  return {
+    type: CLICK_ADDTOCART,
+    payload: tableData,
+  };
+}
 
 export function changeOrderQuantity(size, newValue) {
   const newSizeObject = {};

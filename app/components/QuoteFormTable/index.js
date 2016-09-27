@@ -38,7 +38,7 @@ function QuoteFormTable({ data }) {
                     <input type="number" min="0" />
                   </td>
                 : null}
-                <td>
+                <td style={{ textTransform: 'uppercase' }}>
                   {each[0]}
                 </td>
               </tr>);

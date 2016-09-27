@@ -29,13 +29,14 @@ import { translationMessages } from './i18n';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
+import 'react-loading-bar/dist/index.css';
 
 // Some shit with fonts
 import styles from 'containers/App/styles.css';
-const montserratObserver = new FontFaceObserver('Montserrat', {});
+const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
-montserratObserver.load().then(() => {
+openSansObserver.load().then(() => {
   document.body.classList.add(styles.fontLoaded);
 }, () => {
   document.body.classList.remove(styles.fontLoaded);
