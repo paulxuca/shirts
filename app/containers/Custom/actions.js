@@ -8,12 +8,31 @@ import {
   UPLOAD_IMAGE_SUCCESS,
   CHANGE_ORDER_QUANTITY,
   CLICK_ADDTOCART,
+  CLICK_ADDTOCART_ERROR,
+  CLICK_ADDTOCART_SUCCESS,
 } from './constants';
 
-export function clickAddToCart(tableData) {
+export function clickAddToCartError(error) {
+  return {
+    type: CLICK_ADDTOCART_ERROR,
+    payload: error,
+  };
+}
+
+export function clickAddToCartSuccess(newOrderItem) {
+  return {
+    type: CLICK_ADDTOCART_SUCCESS,
+    payload: newOrderItem,
+  };
+}
+
+export function clickAddToCart(tableData, priceData) {
   return {
     type: CLICK_ADDTOCART,
-    payload: tableData,
+    payload: {
+      tableData,
+      priceData,
+    },
   };
 }
 
@@ -50,10 +69,13 @@ export function uploadImageError(error) {
   };
 }
 
-export function selectNewProductColor(newProductColor) {
+export function selectNewProductColor(newImage, newName) {
   return {
     type: SELECT_NEW_PRODUCT_COLOR,
-    payload: newProductColor,
+    payload: {
+      newImage,
+      newName,
+    },
   };
 }
 

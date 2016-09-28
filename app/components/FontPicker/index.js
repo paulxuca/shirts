@@ -40,7 +40,9 @@ class FontPicker extends React.Component {
       <div className={styles.fontPickerDropdown}>
         <ul
           className={styles.fontList}
-          ref={(fontPicker) => this.fontPicker = fontPicker}
+          ref={(fontPicker) => {
+            this.fontPicker = fontPicker;
+          }}
         >
           {fonts.map((each) =>
             <li
@@ -48,9 +50,10 @@ class FontPicker extends React.Component {
               style={{
                 fontFamily: each,
               }}
-              onClick={() => this.props.onChange(each)}
             >
+              <button onClick={() => this.props.onChange(each)}>
               {each}
+              </button>
             </li>
           )}
         </ul>

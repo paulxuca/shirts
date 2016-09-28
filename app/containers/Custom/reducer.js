@@ -8,16 +8,24 @@ import {
   UPLOAD_IMAGE_ERROR,
   CHANGE_ORDER_QUANTITY,
   CLICK_ADDTOCART,
+  CLICK_ADDTOCART_SUCCESS,
 } from './constants';
 import {
   fromJS,
 } from 'immutable';
 
 
+const initialStateUpper = 'apparel';
+
 const initialStateLower = {
   apparel: 'sweater',
   element: 'all',
 };
+
+const orderQuantityDataInitial = fromJS({
+  addNames: false,
+  addNumbers: false,
+});
 
 const initialState = fromJS({
   currentTopLevelTab: 'apparel',
@@ -26,10 +34,7 @@ const initialState = fromJS({
   newestProductUploaded: false,
   uploadErrors: false,
   isFetching: false,
-  orderQuantityData: {
-    addNames: false,
-    addNumbers: false,
-  },
+  orderQuantityData: orderQuantityDataInitial,
 });
 
 export default function customReducer(state = initialState, action) {
@@ -41,7 +46,8 @@ export default function customReducer(state = initialState, action) {
     case CHANGE_TAB_LL:
       return state.set('currentLowLevelTab', action.payload);
     case SELECT_NEW_PRODUCT:
-      return state.set('currentSelectedProduct', action.payload);
+      return state
+      .set('currentSelectedProduct', action.payload);
     case UPLOAD_IMAGE_INIT:
       return state.set('isFetching', true);
     case UPLOAD_IMAGE_SUCCESS:
@@ -54,8 +60,14 @@ export default function customReducer(state = initialState, action) {
         .set('uploadErrors', action.payload);
     case CLICK_ADDTOCART:
       return state.set('isFetching', true);
+    case CLICK_ADDTOCART_SUCCESS:
+      return state
+      .set('isFetching', false)
+      .set('currentTopLevelTab', initialStateUpper)
+      .set('currentLowLevelTab', 'sweater')
+      .set('orderQuantityData', orderQuantityDataInitial);
     case SELECT_NEW_PRODUCT_COLOR:
-      return state.set('currentSelectedProduct', { ...state.get('currentSelectedProduct'), image: action.payload });
+      return state.set('currentSelectedProduct', { ...state.get('currentSelectedProduct'), image: action.payload.newImage, currentVariant: action.payload.newName, });
     case CHANGE_ORDER_QUANTITY:
       return state.set('orderQuantityData', state.get('orderQuantityData').merge(action.payload));
     default:

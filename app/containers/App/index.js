@@ -13,6 +13,7 @@
 
 import React from 'react';
 import Navigation from 'containers/Navigation';
+import Cart from 'containers/Cart';
 
 import styles from './styles.css';
 
@@ -20,6 +21,7 @@ export default class App extends React.Component { // eslint-disable-line react/
   render() {
     return (
       <div className={styles.container}>
+        <Cart />
         <Navigation />
         {React.Children.toArray(this.props.children)}
       </div>

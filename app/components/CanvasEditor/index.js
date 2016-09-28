@@ -45,7 +45,6 @@ class CanvasEditor extends React.Component {
     if (object) {
       object.sendBackwards();
       this.canvas.renderAll();
-      console.log(this.canvas.toJSON());
     }
   }
 

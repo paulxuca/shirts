@@ -1,7 +1,7 @@
 .customContainer {
   flex: 10;
   display: flex;
-  background-color: #F1F1F1;
+  background-color: #edefed;
   flex-direction: column;
 }
 

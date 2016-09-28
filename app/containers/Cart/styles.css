@@ -1,0 +1,32 @@
+.cartOverlayOpen {
+  right: 0px;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cartOpenClosed {
+  composes: cartOverlayOpen;
+  right: -1000px;
+}
+
+.cartOpen {
+  width: 40vw;
+  background-color: white;
+  height: 100%;
+  right: 0px;
+  position: absolute;
+  display: flex;
+  transition: .25s;
+}
+
+.cartClosed {
+  composes: cartOpen;
+  right: -40vw;
+}
+
+.cartElement {
+  flex: 1;
+  margin: 20px;
+}

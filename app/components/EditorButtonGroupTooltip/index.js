@@ -9,4 +9,8 @@ function EditorButtonGroupTooltip({ text }) {
   );
 }
 
+EditorButtonGroupTooltip.propTypes = {
+  text: React.PropTypes.string,
+};
+
 export default EditorButtonGroupTooltip;

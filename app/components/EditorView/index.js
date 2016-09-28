@@ -50,8 +50,8 @@ class EditorView extends React.Component {
   }
 
   selectNewcolor(nC) {
-    const newColorImage = this.props.data.variants.find((each) => each.name === nC).image;
-    this.props.selectNewColor(newColorImage);
+    const { image, name } = this.props.data.variants.find((each) => each.name === nC);
+    this.props.selectNewColor(image, name);
   }
 
   renderEditorView() {
@@ -117,7 +117,9 @@ class EditorView extends React.Component {
                   className={styles.canvasContainer}
                 >
                   <CanvasEditor
-                    ref={(canvas) => this.canvasContainer = canvas}
+                    ref={(canvas) => {
+                      this.canvasContainer = canvas;
+                    }}
                     canvasHeight={400}
                     canvasWidth={400}
                   />
@@ -128,14 +130,17 @@ class EditorView extends React.Component {
           <div className={styles.editorViewControls}>
             <div className={styles.editorViewControlsContainer}>
                 {this.props.data.variants.map((each) =>
-                  <div
-                    key={each.name}
-                    className={styles.eachColorDot}
-                    style={{
-                      backgroundColor: each.name,
-                    }}
+                  <button
                     onClick={() => this.selectNewcolor(each.name)}
-                  />
+                    key={each.name}
+                  >
+                    <div
+                      className={styles.eachColorDot}
+                      style={{
+                        backgroundColor: each.name,
+                      }}
+                    />
+                  </button>
                 )}
             </div>
           </div>

@@ -21,7 +21,6 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import LanguageProvider from 'containers/LanguageProvider';
 import configureStore from './store';
-import FontFaceObserver from 'fontfaceobserver';
 
 
 // Import i18n messages
@@ -32,15 +31,15 @@ import 'sanitize.css/sanitize.css';
 import 'react-loading-bar/dist/index.css';
 
 // Some shit with fonts
-import styles from 'containers/App/styles.css';
-const openSansObserver = new FontFaceObserver('Open Sans', {});
+// import styles from 'containers/App/styles.css';
+// const openSansObserver = new FontFaceObserver('Open Sans', {});
 
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add(styles.fontLoaded);
-}, () => {
-  document.body.classList.remove(styles.fontLoaded);
-});
+// // When Open Sans is loaded, add a font-family using Open Sans to the body
+// openSansObserver.load().then(() => {
+//   document.body.classList.add(styles.fontLoaded);
+// }, () => {
+//   document.body.classList.remove(styles.fontLoaded);
+// });
 
 
 // Create redux store with history

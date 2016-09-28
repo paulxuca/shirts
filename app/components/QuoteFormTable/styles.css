@@ -27,6 +27,7 @@
 .quoteFormTable tbody tr td input {
   padding: 3px 15px;
   border: 1px solid transparent;
+  width: 90%;
 }
 
 .quoteFormTable tbody tr td input:focus {

@@ -1,8 +1,10 @@
-import { take, call, put, fork, cancel } from 'redux-saga/effects';
+import { take, call, put, fork, cancel, select } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { uploadBase64File } from 'utils/upload';
-import { UPLOAD_IMAGE_INIT, CLICK_ADDTOCART, } from './constants';
-import { uploadImageSuccess, uploadImageError } from './actions';
+import { UPLOAD_IMAGE_INIT, CLICK_ADDTOCART } from './constants';
+import { uploadImageSuccess, uploadImageError, clickAddToCartSuccess } from './actions';
+import { selectCurrentProduct, selectOrderQuantityData } from './selectors';
+import { addItemToCart } from 'containers/Cart/actions';
 
 function* uploadImage(action) {
   const responseData = yield call(uploadBase64File, action.payload);
@@ -13,8 +15,31 @@ function* uploadImage(action) {
   }
 }
 
-function* addToCartFlow(tableData) {
-  console.log(tableData);
+function* addToCartFlow(orderData) {
+  const currentProduct = yield select(selectCurrentProduct());
+  const currentProductOrderData = yield select(selectOrderQuantityData());
+  // if (currentProductOrderData.reduce)
+  if (currentProductOrderData.entrySeq().reduce((current, each) => {
+    if (each[0].indexOf('add') === -1 && Number(each[1]) > 0) {
+      return true;
+    }
+    return current;
+  }, false)) {
+    const addToCartProduct = {
+      product: {
+        name: currentProduct.name,
+        price: currentProduct.price,
+        image: currentProduct.image,
+        variant: currentProduct.currentVariant || currentProduct.defaultVariant,
+      },
+      orderData: currentProductOrderData.toJS(),
+      orderPrice: orderData.priceData,
+    };
+    yield put(addItemToCart(addToCartProduct));
+    yield put(clickAddToCartSuccess());
+  } else {
+    console.log('empty order');
+  }
 }
 
 function* uploadWatcher() {

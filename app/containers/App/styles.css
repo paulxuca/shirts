@@ -10,5 +10,9 @@
   height: 100vh;
   flex-direction: column;
   overflow: hidden;
-  font-family: 'Open Sans';
+  font-family: 'Helvetica Neue';
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
 }

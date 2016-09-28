@@ -4,6 +4,7 @@ import QuoteFormInput from 'components/QuoteFormInput';
 import CheckBoxGroup from 'components/CheckBoxGroup';
 import QuoteFormTable from 'components/QuoteFormTable';
 import RoundedButton from 'components/RoundedButton';
+import quoteFormData from './mock.js';
 
 class QuoteForm extends React.Component {
 
@@ -55,13 +56,13 @@ class QuoteForm extends React.Component {
     return (
       <div className={styles.quoteForm}>
         <div className={styles.quoteFormHeader}>
-          <span className={styles.productNameHeader} style={{ margin: 0 }}>Order Details for your</span>
+          <span className={styles.productNameHeader} style={{ margin: 0 }}>{quoteFormData.orderDetailsHeader}</span>
           <span className={styles.productName}>{productData.name}</span>
         </div>
         <div className={styles.quoteFormScroll}>
           <div className={styles.quoteFormContainer}>
-            <span className={styles.productNameHeader}>Order Sizes</span>
-            <span className={styles.personalizationPrice}>Pick size of ordered items. You may add as many as you'd like, and we'll do our best to accommodate.</span>
+            <span className={styles.productNameHeader}>{quoteFormData.orderSizes}</span>
+            <span className={styles.personalizationPrice}>{quoteFormData.pickSize}</span>
             <div className={styles.quoteFormSizes}>
               {productData.sizes.map((each) =>
                 <QuoteFormInput
@@ -73,7 +74,7 @@ class QuoteForm extends React.Component {
               )}
             </div>
             <div className={styles.personalizationOptions}>
-              <span className={styles.productNameHeader}>Personalization Options</span>
+              <span className={styles.productNameHeader}>{quoteFormData.personalizationOptions}</span>
               <div
                 style={{
                   flex: 1,
@@ -142,7 +143,7 @@ class QuoteForm extends React.Component {
               <RoundedButton
                 text="Add to Cart"
                 icon="shoppingCart"
-                onClick={() => this.props.onClickAddToCart(this.getTableData())}
+                onClick={() => this.props.onClickAddToCart(this.getTableData(), this.calculateOrderCost())}
               />
             </div>
           </div>

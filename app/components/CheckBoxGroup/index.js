@@ -7,6 +7,7 @@ function CheckBoxGroup({ onChange, active, children }) {
       <span
         className={styles.checkbox}
         onClick={onChange}
+        role="button"
       >
         {active ? <span className={styles.checkmark} /> : null}
       </span>

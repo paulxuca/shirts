@@ -175,9 +175,9 @@ function mapActionsToProps(dispatch) {
     changeTopLevelTab: (newTab) => dispatch(changeTopLevelTab(newTab)),
     changeLowLevelTab: (newTab) => dispatch(changeLowLevelTab(newTab)),
     selectNewProduct: (newProduct) => dispatch(selectNewProduct(newProduct)),
-    selectNewProductColor: (nPC) => dispatch(selectNewProductColor(nPC)),
+    selectNewProductColor: (image, name) => dispatch(selectNewProductColor(image, name)),
     uploadImageInit: (fileName, imageData) => dispatch(uploadImageInit(fileName, imageData)),
-    clickAddToCart: (tableData) => dispatch(clickAddToCart(tableData)),
+    clickAddToCart: (tableData, priceData) => dispatch(clickAddToCart(tableData, priceData)),
   };
 }
 

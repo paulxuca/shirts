@@ -23,7 +23,7 @@ function QuoteFormTable({ data }) {
           </tr>
         </thead>
         <tbody>
-          {data.filter((each) => typeof each === 'number' && each > 0).entrySeq().map((each, k, i) => {
+          {data.filter((each) => typeof each === 'number' && each > 0).entrySeq().map((each) => {
             let iter = 0;
             const eachRow = [];
             for (; iter < each[1]; iter += 1) {
@@ -38,7 +38,7 @@ function QuoteFormTable({ data }) {
                     <input type="number" min="0" />
                   </td>
                 : null}
-                <td style={{ textTransform: 'uppercase' }}>
+                <td style={{ fontSize: 16, fontWeight: 400 }}>
                   {each[0]}
                 </td>
               </tr>);

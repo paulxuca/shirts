@@ -34,13 +34,12 @@
 .productName {
   display: block;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   margin: 0;
-  font-family: 'Source Sans Pro';
 }
 
 .productNameHeader {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   display: block;
   margin: 5px 0px;
@@ -62,13 +61,12 @@
 }
 
 .totalCostText {
-  font-size: 30px;
-  display: block;
-  font-weight: 300;
+  font-size: 26px;
+  font-weight: 500;
 }
 
 .personalizationPrice {
-  color: #CCC;
+  color: rgba(153, 153, 153, 1);
   font-size: 13px;
 }
 
