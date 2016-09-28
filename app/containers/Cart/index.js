@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './styles.css';
 import { connect } from 'react-redux';
+import CartItem from './cartItem';
 import { createStructuredSelector } from 'reselect';
-import { selectIsCartOpen } from './selectors';
+import { selectIsCartOpen, selectCartItems } from './selectors';
 import { closeCart } from './actions';
+
 
 
 class Cart extends React.Component { // eslint-disable-line
@@ -31,9 +33,11 @@ class Cart extends React.Component { // eslint-disable-line
               style={{
                 height: 6,
                 backgroundColor: '#000',
+                width: '100%',
               }}
             />
             <h5>Order Summary</h5>
+            {this.props.cartItems.map((each, index) => <CartItem key={index} data={each} />)}
           </div>
         </div>
       </div>
@@ -44,10 +48,12 @@ class Cart extends React.Component { // eslint-disable-line
 Cart.propTypes = {
   cartOpen: React.PropTypes.bool,
   closeCart: React.PropTypes.func,
+  cartItems: React.PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   cartOpen: selectIsCartOpen(),
+  cartItems: selectCartItems(),
 });
 
 function mapDispatchToProps(dispatch) {

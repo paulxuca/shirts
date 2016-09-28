@@ -9,6 +9,7 @@ import {
   CHANGE_ORDER_QUANTITY,
   CLICK_ADDTOCART,
   CLICK_ADDTOCART_SUCCESS,
+  CLICK_ADDTOCART_ERROR,
 } from './constants';
 import {
   fromJS,
@@ -32,8 +33,9 @@ const initialState = fromJS({
   currentLowLevelTab: 'sweater',
   currentSelectedProduct: false,
   newestProductUploaded: false,
-  uploadErrors: false,
+  errors: false,
   isFetching: false,
+  addToCartSuccess: false,
   orderQuantityData: orderQuantityDataInitial,
 });
 
@@ -57,15 +59,22 @@ export default function customReducer(state = initialState, action) {
     case UPLOAD_IMAGE_ERROR:
       return state
         .set('isFetching', false)
-        .set('uploadErrors', action.payload);
+        .set('errors', action.payload);
     case CLICK_ADDTOCART:
-      return state.set('isFetching', true);
+      return state
+        .set('addToCartSuccess', false)
+        .set('isFetching', true);
     case CLICK_ADDTOCART_SUCCESS:
       return state
-      .set('isFetching', false)
-      .set('currentTopLevelTab', initialStateUpper)
-      .set('currentLowLevelTab', 'sweater')
-      .set('orderQuantityData', orderQuantityDataInitial);
+        .set('isFetching', false)
+        .set('currentTopLevelTab', initialStateUpper)
+        .set('currentLowLevelTab', 'sweater')
+        .set('addToCartSuccess', true)
+        .set('orderQuantityData', orderQuantityDataInitial);
+    case CLICK_ADDTOCART_ERROR:
+      return state
+        .set('isFetching', false)
+        .set('errors', action.payload);
     case SELECT_NEW_PRODUCT_COLOR:
       return state.set('currentSelectedProduct', { ...state.get('currentSelectedProduct'), image: action.payload.newImage, currentVariant: action.payload.newName, });
     case CHANGE_ORDER_QUANTITY:

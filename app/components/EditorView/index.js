@@ -27,6 +27,14 @@ class EditorView extends React.Component {
     document.body.addEventListener('keydown', this.onKeyDownOnCanvas, { passive: true });
   }
 
+  onRequestJSON() {
+    return this.canvasContainer.toJSON();
+  }
+
+  onClearCanvas() {
+    this.canvasContainer.clearCanvas();
+  }
+
   onKeyDownOnCanvas(e) {
     if (e.keyCode === 8 || e.keyCode === 46) {
       this.canvasContainer.deleteActiveObject();

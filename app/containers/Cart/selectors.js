@@ -7,7 +7,13 @@ const selectIsCartOpen = () => createSelector(
   (substate) => substate.get('cartOpen'),
 );
 
+const selectCartItems = () => createSelector(
+	selectCartReducer(),
+	(substate) => substate.get('itemsInCart'),
+);
+
 export {
   selectIsCartOpen,
+  selectCartItems,
 };
 

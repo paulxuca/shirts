@@ -34,6 +34,7 @@ function* addToCartFlow(orderData) {
       },
       orderData: currentProductOrderData.toJS(),
       orderPrice: orderData.priceData,
+      orderProductJSON: orderData.currentProductJSON,
     };
     yield put(addItemToCart(addToCartProduct));
     yield put(clickAddToCartSuccess());

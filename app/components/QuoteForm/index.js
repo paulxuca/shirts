@@ -129,7 +129,7 @@ class QuoteForm extends React.Component {
                 flex: 1,
               }}
             >
-              <span className={styles.productNameHeader}>Total Cost</span>
+              <span className={styles.productNameHeader}>Subtotal</span>
               <span className={styles.totalCostText}>${this.calculateOrderCost(sizeData, productData.price)}</span>
             </div>
             <div

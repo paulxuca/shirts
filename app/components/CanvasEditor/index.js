@@ -25,6 +25,14 @@ class CanvasEditor extends React.Component {
     }
   }
 
+  toJSON() {
+    return this.canvas.toJSON();
+  }
+
+  clearCanvas() {
+    this.canvas.clear();
+  }
+
   addNewImageElement(url) {
     fabric.util.loadImage(url, (img) => {
       const legimg = new fabric.Image(img, {

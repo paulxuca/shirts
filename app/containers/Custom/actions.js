@@ -26,12 +26,13 @@ export function clickAddToCartSuccess(newOrderItem) {
   };
 }
 
-export function clickAddToCart(tableData, priceData) {
+export function clickAddToCart(tableData, priceData, currentProductJSON) {
   return {
     type: CLICK_ADDTOCART,
     payload: {
       tableData,
       priceData,
+      currentProductJSON,
     },
   };
 }

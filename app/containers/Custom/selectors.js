@@ -34,6 +34,11 @@ const selectIsFetching = () => createSelector(
   (substate) => substate.get('isFetching'),
 );
 
+const selectDidAddToCartSucceed = () => createSelector(
+  selectCustomReducer(),
+  (substate) => substate.get('addToCartSuccess'),
+);
+
 export {
   selectTopLevelTab,
   selectLowLevelTab,
@@ -41,4 +46,5 @@ export {
   selectNewestUploadedImage,
   selectOrderQuantityData,
   selectIsFetching,
+  selectDidAddToCartSucceed,
 };

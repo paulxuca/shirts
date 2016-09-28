@@ -6,6 +6,7 @@ import {
   selectNewestUploadedImage,
   selectOrderQuantityData,
   selectIsFetching,
+  selectDidAddToCartSucceed,
 } from './selectors';
 import {
   changeTopLevelTab,
@@ -32,6 +33,13 @@ import Loading from 'react-loading-bar';
 import styles from './styles.css';
 
 class Custom extends React.Component {
+  componentWillReceiveProps(nP) {
+    if (nP.addToCartSuccess) {
+      this.editor.onClearCanvas();
+    }
+  }
+
+
   renderTopLevelTabs() {
     return topLevelTabs.map((each) =>
       <SelectionTab
@@ -72,7 +80,10 @@ class Custom extends React.Component {
         productData={this.props.currentProduct}
         sizeData={this.props.orderQuantityData}
         onChangeAmount={this.props.changeOrderQuantity}
-        onClickAddToCart={this.props.clickAddToCart}
+        onClickAddToCart={(tableData, priceData) => {
+          const currentProductJSON = this.editor.onRequestJSON();
+          this.props.clickAddToCart(tableData, priceData, currentProductJSON);
+        }}
       />
     );
   }
@@ -128,6 +139,9 @@ class Custom extends React.Component {
                 selectNewColor={this.props.selectNewProductColor}
                 onImageUpload={(fileName, imageData) => this.props.uploadImageInit(fileName, imageData)}
                 newestImageUploadUrl={this.props.newestUploadedImage}
+                ref={(editorView) => {
+                  this.editor = editorView;
+                }}
               />
               :
               null}
@@ -158,6 +172,7 @@ Custom.propTypes = {
   orderQuantityData: React.PropTypes.object,
   isFetching: React.PropTypes.bool,
   clickAddToCart: React.PropTypes.func,
+  addToCartSuccess: React.PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -167,6 +182,7 @@ const mapStateToProps = createStructuredSelector({
   newestUploadedImage: selectNewestUploadedImage(),
   orderQuantityData: selectOrderQuantityData(),
   isFetching: selectIsFetching(),
+  addToCartSuccess: selectDidAddToCartSucceed(),
 });
 
 function mapActionsToProps(dispatch) {
@@ -177,7 +193,9 @@ function mapActionsToProps(dispatch) {
     selectNewProduct: (newProduct) => dispatch(selectNewProduct(newProduct)),
     selectNewProductColor: (image, name) => dispatch(selectNewProductColor(image, name)),
     uploadImageInit: (fileName, imageData) => dispatch(uploadImageInit(fileName, imageData)),
-    clickAddToCart: (tableData, priceData) => dispatch(clickAddToCart(tableData, priceData)),
+    clickAddToCart: (tableData, priceData, currentProductJSON) => {
+      dispatch(clickAddToCart(tableData, priceData, currentProductJSON));
+    },
   };
 }
 
