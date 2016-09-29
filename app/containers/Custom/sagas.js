@@ -18,7 +18,6 @@ function* uploadImage(action) {
 function* addToCartFlow(orderData) {
   const currentProduct = yield select(selectCurrentProduct());
   const currentProductOrderData = yield select(selectOrderQuantityData());
-  // if (currentProductOrderData.reduce)
   if (currentProductOrderData.entrySeq().reduce((current, each) => {
     if (each[0].indexOf('add') === -1 && Number(each[1]) > 0) {
       return true;
@@ -32,7 +31,7 @@ function* addToCartFlow(orderData) {
         image: currentProduct.image,
         variant: currentProduct.currentVariant || currentProduct.defaultVariant,
       },
-      orderData: currentProductOrderData.toJS(),
+      orderData: currentProductOrderData,
       orderPrice: orderData.priceData,
       orderProductJSON: orderData.currentProductJSON,
     };

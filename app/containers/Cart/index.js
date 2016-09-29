@@ -6,8 +6,6 @@ import { createStructuredSelector } from 'reselect';
 import { selectIsCartOpen, selectCartItems } from './selectors';
 import { closeCart } from './actions';
 
-
-
 class Cart extends React.Component { // eslint-disable-line
   onClickOverlay(e) {
     if (this.props.cartOpen && this.sidebar && !this.sidebar.contains(e.target)) {

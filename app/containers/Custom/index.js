@@ -172,7 +172,6 @@ Custom.propTypes = {
   orderQuantityData: React.PropTypes.object,
   isFetching: React.PropTypes.bool,
   clickAddToCart: React.PropTypes.func,
-  addToCartSuccess: React.PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({

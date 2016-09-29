@@ -8,6 +8,7 @@ function QuoteFormTable({ data }) {
     return (
       <table
         className={styles.quoteFormTable}
+        id="customTable"
       >
         <thead>
           <tr>

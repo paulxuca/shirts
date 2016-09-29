@@ -5,6 +5,7 @@ import CheckBoxGroup from 'components/CheckBoxGroup';
 import QuoteFormTable from 'components/QuoteFormTable';
 import RoundedButton from 'components/RoundedButton';
 import quoteFormData from './mock.js';
+import { totalEntryCost } from 'utils/cost';
 
 class QuoteForm extends React.Component {
 
@@ -13,9 +14,7 @@ class QuoteForm extends React.Component {
   }
 
   getTableData() {
-    // const table = document.querySelector('table').children[1].children;
-    const table = document.querySelector('table') && Array.from(document.querySelector('table').children[1].children);
-
+    const table = document.querySelector('table[id="customTable"]') && Array.from(document.querySelector('table[id="customTable"]').children[1].children);
     return table && table.map((each) => {
       const childrenArray = each.children;
       const apparelSize = childrenArray[each.children.length - 1].innerHTML;
@@ -37,18 +36,6 @@ class QuoteForm extends React.Component {
         apparelNumber,
       };
     });
-  }
-
-  calculateOrderCost() {
-    const totalItems = this.props.sizeData.reduce((total, each) => {
-      if (typeof each === 'number') {
-        return total + Number(each);
-      }
-      return total;
-    }, 0);
-    const numbersCost = (this.props.sizeData.get('addNumbers')) ? (totalItems * 2.5) : 0;
-    const namesCost = (this.props.sizeData.get('addNames')) ? (totalItems * 4.5) : 0;
-    return ((totalItems * this.props.productData.price) + numbersCost + namesCost).toFixed(2);
   }
 
   renderOrderForm() {
@@ -130,7 +117,7 @@ class QuoteForm extends React.Component {
               }}
             >
               <span className={styles.productNameHeader}>Subtotal</span>
-              <span className={styles.totalCostText}>${this.calculateOrderCost(sizeData, productData.price)}</span>
+              <span className={styles.totalCostText}>${totalEntryCost(sizeData, productData.price)}</span>
             </div>
             <div
               style={{
@@ -143,7 +130,7 @@ class QuoteForm extends React.Component {
               <RoundedButton
                 text="Add to Cart"
                 icon="shoppingCart"
-                onClick={() => this.props.onClickAddToCart(this.getTableData(), this.calculateOrderCost())}
+                onClick={() => this.props.onClickAddToCart(this.getTableData(), totalEntryCost(sizeData, productData.price))}
               />
             </div>
           </div>
